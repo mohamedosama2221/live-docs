@@ -10,6 +10,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <nav>
         <Header className="sticky left-0 top-0">
+          <div id="title-wrapper"></div>
           <div className="flex items-center gap-2 lg:gap-4">
             <div id="collaborators-wrapper"></div>
             <SignedOut>

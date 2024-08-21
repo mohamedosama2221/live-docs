@@ -1,3 +1,5 @@
+import { RoomData } from "@liveblocks/node";
+
 declare type HeaderProps = {
   children: React.ReactNode;
   className?: string;
@@ -28,5 +30,21 @@ declare type RoomListProps = {
   metadata: any;
   createdAt: string;
 };
+declare type CollaborativeRoomProps = {
+  id: string;
+  room: RoomData;
+};
 
 declare type userInfo = { info: { avatar: string; name: string } };
+
+declare type GenericInputProps = {
+  title: string;
+  ref: ForwardedRef<HTMLInputElement>;
+  settitle: (value: string) => void;
+  updateTitleHandler: (event: KeyboardEvent<HTMLInputElement>) => void;
+};
+
+declare type DocumentTitleProps = {
+  metadata: RoomMetadata;
+  roomId: string;
+};

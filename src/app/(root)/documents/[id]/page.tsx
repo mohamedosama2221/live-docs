@@ -1,6 +1,7 @@
 import { getDocument } from "@/actions/room.actions";
 import CollaborativeRoom from "@/components/CollaborativeRoom";
 import { currentUser } from "@clerk/nextjs/server";
+import { RoomData } from "@liveblocks/node";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -10,7 +11,7 @@ const Document = async (props: { params: { id: string } }) => {
   const clerkUser = await currentUser();
   if (!clerkUser) redirect("/signin");
 
-  const room = await getDocument({
+  const room: RoomData = await getDocument({
     roomId: id,
     userId: clerkUser.emailAddresses[0].emailAddress,
   });
@@ -19,7 +20,7 @@ const Document = async (props: { params: { id: string } }) => {
 
   return (
     <div>
-      <CollaborativeRoom id={id} />
+      <CollaborativeRoom id={id} room={room} />
     </div>
   );
 };

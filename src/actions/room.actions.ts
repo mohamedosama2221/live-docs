@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { revalidatePath } from "next/cache";
 import { liveblocks } from "@/lib/liveblocks";
 import { parseStringify } from "@/lib/utils";
+import { CreateDocumentParams, RoomAccesses } from "@/types";
 
 //Create Room
 export const createDocument = async ({
@@ -39,11 +40,9 @@ export const createDocument = async ({
 
 //Get Rooms
 export const getDocuments = async (email: string) => {
-  const roomId = nanoid();
-
   try {
     const room = await liveblocks.getRooms({ userId: email });
-
+    revalidatePath("/");
     return parseStringify(room);
   } catch (error) {
     console.log(`Error happened while creating a room: ${error}`);
@@ -77,8 +76,26 @@ export const getDocument = async ({
 export const getActiveUsersInDocument = async (id: string) => {
   try {
     const activeUsers = await liveblocks.getActiveUsers(id);
+    revalidatePath("/");
     return parseStringify(activeUsers);
   } catch (error) {
     console.log(`Error happened while creating a room: ${error}`);
+  }
+};
+
+//Update Document
+export const updateDocument = async (roomId: string, title: string) => {
+  try {
+    const updatedRoom = await liveblocks.updateRoom(roomId, {
+      metadata: {
+        title,
+      },
+    });
+
+    revalidatePath(`/documents/${roomId}`);
+
+    return parseStringify(updatedRoom);
+  } catch (error) {
+    console.log(`Error happened while updating a room: ${error}`);
   }
 };
