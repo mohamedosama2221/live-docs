@@ -4,6 +4,8 @@ import { nanoid } from "nanoid";
 import { revalidatePath } from "next/cache";
 import { liveblocks } from "@/lib/liveblocks";
 import { parseStringify } from "@/lib/utils";
+
+//Create Room
 export const createDocument = async ({
   userId,
   email,
@@ -28,6 +30,19 @@ export const createDocument = async ({
     });
 
     revalidatePath("/");
+
+    return parseStringify(room);
+  } catch (error) {
+    console.log(`Error happened while creating a room: ${error}`);
+  }
+};
+
+//Get Rooms
+export const getDocuments = async (email: string) => {
+  const roomId = nanoid();
+
+  try {
+    const room = await liveblocks.getRooms({ userId: email });
 
     return parseStringify(room);
   } catch (error) {

@@ -2,6 +2,10 @@ declare type HeaderProps = {
   children: React.ReactNode;
   className?: string;
 };
+declare type AddDocumentBtn = {
+  userId: string;
+  email: string;
+};
 
 declare type AccessType = ["room:write"] | ["room:read", "room:presence:write"];
 
