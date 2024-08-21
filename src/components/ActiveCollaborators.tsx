@@ -4,7 +4,6 @@ import { createPortal } from "react-dom";
 
 const ActiveCollaborators = async () => {
   const others = useOthers();
-  console.log("🚀 ~ ActiveCollaborators ~ others:", others);
 
   const collaborators = others.map((other) => other.info);
 
