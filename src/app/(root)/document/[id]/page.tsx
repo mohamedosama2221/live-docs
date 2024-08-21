@@ -1,10 +1,11 @@
-import { Editor } from "@/components/editor/Editor";
+import CollaborativeRoom from "@/components/CollaborativeRoom";
 import React from "react";
 
-const Document = () => {
+const Document = (props: { params: { id: string } }) => {
+  const id = props.params.id;
   return (
     <div>
-      <Editor />
+      <CollaborativeRoom id={id} />
     </div>
   );
 };
