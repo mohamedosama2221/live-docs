@@ -23,3 +23,10 @@ declare type CreateDocumentParams = {
   userId: string;
   email: string;
 };
+declare type RoomListProps = {
+  id: string;
+  metadata: any;
+  createdAt: string;
+};
+
+declare type userInfo = { info: { avatar: string; name: string } };

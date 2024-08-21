@@ -49,3 +49,14 @@ export const getDocuments = async (email: string) => {
     console.log(`Error happened while creating a room: ${error}`);
   }
 };
+
+//Get Active Users In room
+export const getActiveUsersInDocument = async (id: string) => {
+  try {
+    const activeUsers = await liveblocks.getActiveUsers(id);
+
+    return parseStringify(activeUsers);
+  } catch (error) {
+    console.log(`Error happened while creating a room: ${error}`);
+  }
+};

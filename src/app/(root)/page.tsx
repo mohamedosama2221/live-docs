@@ -1,4 +1,5 @@
-import { getDocuments } from "@/actions/room.actions";
+import { getActiveUsersInDocument, getDocuments } from "@/actions/room.actions";
+import RoomList from "@/common/RoomList";
 import AddDocumentBtn from "@/components/AddDocumentBtn";
 import { dateConverter } from "@/lib/utils";
 import { currentUser } from "@clerk/nextjs/server";
@@ -15,7 +16,6 @@ export default async function Home() {
   const userEmail = emailAddresses[0].emailAddress as string;
 
   const rooms = await getDocuments(userEmail);
-
   return (
     <div className="home-container">
       {rooms.data.length > 0 ? (
@@ -26,27 +26,7 @@ export default async function Home() {
           </div>
           <ul className="document-ul">
             {rooms.data.map(({ id, metadata, createdAt }: any) => (
-              <li key={id} className="document-list-item">
-                <Link
-                  href={`/documents/${id}`}
-                  className="flex flex-1 items-center gap-4"
-                >
-                  <div className="hidden rounded-md bg-dark-500 p-2 sm:block">
-                    <Image
-                      src="/assets/icons/doc.svg"
-                      alt="file"
-                      width={40}
-                      height={40}
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <p className="line-clamp-1 text-lg">{metadata.title}</p>
-                    <p className="text-sm font-light text-blue-100">
-                      Created about {dateConverter(createdAt)}
-                    </p>
-                  </div>
-                </Link>
-              </li>
+              <RoomList id={id} metadata={metadata} createdAt={createdAt} />
             ))}
           </ul>
         </div>

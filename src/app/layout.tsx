@@ -13,6 +13,7 @@ import {
 } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Provider from "./Provider";
+import ActiveCollaborators from "@/components/ActiveCollaborators";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -40,13 +41,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Provider>
             <nav>
               <Header className="sticky left-0 top-0">
-                <div className="flex items-center gap-2 lg:gap-4"></div>
-                <SignedOut>
-                  <SignInButton />
-                </SignedOut>
-                <SignedIn>
-                  <UserButton />
-                </SignedIn>
+                <div className="flex items-center gap-2 lg:gap-4">
+                  <ActiveCollaborators />
+
+                  <SignedOut>
+                    <SignInButton />
+                  </SignedOut>
+                  <SignedIn>
+                    <UserButton />
+                  </SignedIn>
+                </div>
               </Header>
             </nav>
 
