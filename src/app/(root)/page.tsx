@@ -1,5 +1,6 @@
 import { getDocuments } from "@/actions/room.actions";
 import AddDocumentBtn from "@/components/AddDocumentBtn";
+import { dateConverter } from "@/lib/utils";
 import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +25,7 @@ export default async function Home() {
             <AddDocumentBtn userId={id} email={userEmail} />
           </div>
           <ul className="document-ul">
-            {rooms.data.map(({ id, metadata }: any) => (
+            {rooms.data.map(({ id, metadata, createdAt }: any) => (
               <li key={id} className="document-list-item">
                 <Link
                   href={`/documents/${id}`}
@@ -40,6 +41,9 @@ export default async function Home() {
                   </div>
                   <div className="space-y-1">
                     <p className="line-clamp-1 text-lg">{metadata.title}</p>
+                    <p className="text-sm font-light text-blue-100">
+                      Created about {dateConverter(createdAt)}
+                    </p>
                   </div>
                 </Link>
               </li>
