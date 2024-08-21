@@ -1,10 +1,8 @@
-import { getActiveUsersInDocument, getDocuments } from "@/actions/room.actions";
+import { getDocuments } from "@/actions/room.actions";
 import RoomList from "@/common/RoomList";
 import AddDocumentBtn from "@/components/AddDocumentBtn";
-import { dateConverter } from "@/lib/utils";
 import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
@@ -26,7 +24,12 @@ export default async function Home() {
           </div>
           <ul className="document-ul">
             {rooms.data.map(({ id, metadata, createdAt }: any) => (
-              <RoomList id={id} metadata={metadata} createdAt={createdAt} />
+              <RoomList
+                id={id}
+                metadata={metadata}
+                createdAt={createdAt}
+                key={id}
+              />
             ))}
           </ul>
         </div>
