@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import CollabAvatar from "./CollabAvatar";
+import { DeleteModal } from "@/components/DeleteModal";
 
 const RoomList = ({ id, metadata, createdAt }: RoomListProps) => {
   return (
@@ -41,6 +42,7 @@ const RoomList = ({ id, metadata, createdAt }: RoomListProps) => {
           )}
         </div>
       </Link>
+      <DeleteModal roomId={id} />
     </li>
   );
 };

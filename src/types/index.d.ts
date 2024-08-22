@@ -4,7 +4,7 @@ declare type HeaderProps = {
   children: React.ReactNode;
   className?: string;
 };
-declare type AddDocumentBtn = {
+declare type AddDocumentBtnProps = {
   userId: string;
   email: string;
 };
@@ -75,3 +75,5 @@ declare type CollabAvatarProps = {
 };
 
 declare type ThreadWrapperProps = { thread: ThreadData<BaseMetadata> };
+
+declare type DeleteModalProps = { roomId: string };

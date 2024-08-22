@@ -4,8 +4,9 @@ import { createDocument } from "@/actions/room.actions";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { AddDocumentBtnProps } from "@/types";
 
-const AddDocumentBtn = ({ userId, email }: AddDocumentBtn) => {
+const AddDocumentBtn = ({ userId, email }: AddDocumentBtnProps) => {
   const router = useRouter();
 
   const addDocumentHandler = async () => {
