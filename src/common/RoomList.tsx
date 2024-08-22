@@ -1,8 +1,10 @@
 import { getActiveUsersInDocument } from "@/actions/room.actions";
 import { dateConverter } from "@/lib/utils";
+import { RoomListProps, userInfo } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import CollabAvatar from "./CollabAvatar";
 
 const RoomList = ({ id, metadata, createdAt }: RoomListProps) => {
   return (
@@ -25,20 +27,16 @@ const RoomList = ({ id, metadata, createdAt }: RoomListProps) => {
             Created about {dateConverter(createdAt)}
           </p>
         </div>
-        <div className="flex flex-row gap-0 ml-auto pr-5">
+        <div className="flex -space-x-2 overflow-hidden ml-auto pr-5">
           {getActiveUsersInDocument(id).then((el) =>
             el?.data?.map((user: userInfo, i: number) => (
-              <span
-                key={`item_${i}`}
-                className="rounded-full overflow-hidden h-10 w-10 border-[3px] -mr-4 shadow-[0px_0px_9px_0px_#4a5568] border-white"
-              >
-                <Image
-                  src={user.info.avatar}
-                  width={40}
-                  height={40}
-                  alt={user.info.name}
-                />
-              </span>
+              <CollabAvatar
+                id={id}
+                avatar={user.info.avatar}
+                name={user.info.name}
+                color={user.info.color}
+                key={`collab_doc_${id}_${i}`}
+              />
             ))
           )}
         </div>

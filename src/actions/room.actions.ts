@@ -76,6 +76,7 @@ export const getDocument = async ({
 export const getActiveUsersInDocument = async (id: string) => {
   try {
     const activeUsers = await liveblocks.getActiveUsers(id);
+    console.log("🚀 ~ getActiveUsersInDocument ~ activeUsers:", activeUsers);
     revalidatePath("/");
     return parseStringify(activeUsers);
   } catch (error) {
