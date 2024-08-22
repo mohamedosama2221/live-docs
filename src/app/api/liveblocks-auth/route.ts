@@ -1,4 +1,5 @@
 import { liveblocks } from "@/lib/liveblocks";
+import { getUserColor } from "@/lib/utils";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
@@ -18,7 +19,7 @@ export async function POST() {
       name: `${clerkUser.firstName} ${clerkUser.lastName}`,
       email: clerkUser.emailAddresses[0].emailAddress,
       avatar: clerkUser.imageUrl,
-      color: "#fff",
+      color: getUserColor(clerkUser.id),
     },
   };
   // Identify the user and return the result
