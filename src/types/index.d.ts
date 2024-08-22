@@ -27,7 +27,7 @@ declare type CreateDocumentParams = {
 };
 declare type RoomListProps = {
   id: string;
-  metadata: any;
+  metadata: RoomMetadata;
   createdAt: string;
 };
 
