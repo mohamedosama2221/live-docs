@@ -21,6 +21,7 @@ import { EditorProps } from "@/types";
 import FloatingToolbarPlugin from "./plugins/FloatingToolbarPlugin";
 import { useThreads } from "@liveblocks/react/suspense";
 import Loader from "@/common/Loader";
+import Comments from "../Comments";
 // Catch any errors that occur during Lexical updates and log them
 // or throw them as needed. If you don't throw them, Lexical will
 // try to recover gracefully without losing user data.
@@ -70,6 +71,7 @@ export function Editor({ id, currentUserType }: EditorProps) {
           <LiveblocksPlugin>
             <FloatingComposer className="w-[350px]" />
             <FloatingThreads threads={threads} />
+            <Comments />
           </LiveblocksPlugin>
         </div>
       </div>

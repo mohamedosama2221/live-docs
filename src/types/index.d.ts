@@ -73,3 +73,5 @@ declare type CollabAvatarProps = {
   name: string;
   color: string;
 };
+
+declare type ThreadWrapperProps = { thread: ThreadData<BaseMetadata> };
