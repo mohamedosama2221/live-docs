@@ -6,7 +6,12 @@ import Loader from "@/common/Loader";
 import ActiveCollaborators from "./ActiveCollaborators";
 import DocumentTitle from "./DocumentTitle";
 import { CollaborativeRoomProps } from "@/types";
-const CollaborativeRoom = ({ id, room }: CollaborativeRoomProps) => {
+const CollaborativeRoom = ({
+  id,
+  room,
+  users,
+  currentUserType,
+}: CollaborativeRoomProps) => {
   const { metadata } = room;
   return (
     <div>
@@ -14,7 +19,7 @@ const CollaborativeRoom = ({ id, room }: CollaborativeRoomProps) => {
         <ClientSideSuspense fallback={<Loader />}>
           <DocumentTitle metadata={metadata} roomId={id} />
           <ActiveCollaborators />
-          <Editor />
+          <Editor id={id} currentUserType={currentUserType} />
         </ClientSideSuspense>
       </RoomProvider>
     </div>

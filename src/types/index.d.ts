@@ -30,10 +30,6 @@ declare type RoomListProps = {
   metadata: any;
   createdAt: string;
 };
-declare type CollaborativeRoomProps = {
-  id: string;
-  room: RoomData;
-};
 
 declare type userInfo = { info: { avatar: string; name: string } };
 
@@ -47,4 +43,24 @@ declare type GenericInputProps = {
 declare type DocumentTitleProps = {
   metadata: RoomMetadata;
   roomId: string;
+};
+
+declare type User = {
+  id: string;
+  name: string;
+  email: string;
+  avatar: string;
+  color: string;
+  userType?: UserType;
+};
+
+declare type CollaborativeRoomProps = {
+  id: string;
+  room: RoomData;
+  users: User[];
+  currentUserType: UserType;
+};
+declare type EditorProps = {
+  id: string;
+  currentUserType: UserType;
 };
