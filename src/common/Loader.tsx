@@ -3,275 +3,119 @@ import styled from "styled-components";
 
 const Loader = () => {
   return (
-    <div className="h-screen w-screen grid place-items-center">
+    <div className="h-screen w-screen max-h-full max-w-full grid place-items-center">
       <StyledWrapper>
-        <svg className="pl" width="240" height="240" viewBox="0 0 240 240">
-          <circle
-            className="pl__ring pl__ring--a"
-            cx="120"
-            cy="120"
-            r="105"
-            fill="none"
-            stroke="#000"
-            strokeWidth={20}
-            strokeDasharray="0 660"
-            strokeDashoffset={-330}
-            strokeLinecap="round"
-          />
-          <circle
-            className="pl__ring pl__ring--b"
-            cx="120"
-            cy="120"
-            r="35"
-            fill="none"
-            stroke="#000"
-            strokeWidth={20}
-            strokeDasharray="0 220"
-            strokeDashoffset={-110}
-            strokeLinecap="round"
-          />
-          <circle
-            className="pl__ring pl__ring--c"
-            cx="85"
-            cy="120"
-            r="70"
-            fill="none"
-            stroke="#000"
-            strokeWidth={20}
-            strokeDasharray="0 440"
-            strokeLinecap="round"
-          />
-          <circle
-            className="pl__ring pl__ring--d"
-            cx="155"
-            cy="120"
-            r="70"
-            fill="none"
-            stroke="#000"
-            strokeWidth={20}
-            strokeDasharray="0 440"
-            strokeLinecap="round"
-          />
-        </svg>
+        <div className="three-body">
+          <div className="three-body__dot" />
+          <div className="three-body__dot" />
+          <div className="three-body__dot" />
+        </div>
       </StyledWrapper>
     </div>
   );
 };
 
 const StyledWrapper = styled.div`
-  .pl {
-    width: 6em;
-    height: 6em;
+  .three-body {
+    --uib-size: 35px;
+    --uib-speed: 0.8s;
+    --uib-color: #5d3fd3;
+    position: relative;
+    display: inline-block;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
   }
 
-  .pl__ring {
-    animation: ringA 2s linear infinite;
+  .three-body__dot {
+    position: absolute;
+    height: 100%;
+    width: 30%;
   }
 
-  .pl__ring--a {
-    stroke: #f42f25;
+  .three-body__dot:after {
+    content: "";
+    position: absolute;
+    height: 0%;
+    width: 100%;
+    padding-bottom: 100%;
+    background-color: var(--uib-color);
+    border-radius: 50%;
   }
 
-  .pl__ring--b {
-    animation-name: ringB;
-    stroke: #f49725;
+  .three-body__dot:nth-child(1) {
+    bottom: 5%;
+    left: 0;
+    transform: rotate(60deg);
+    transform-origin: 50% 85%;
   }
 
-  .pl__ring--c {
-    animation-name: ringC;
-    stroke: #255ff4;
+  .three-body__dot:nth-child(1)::after {
+    bottom: 0;
+    left: 0;
+    animation: wobble1 var(--uib-speed) infinite ease-in-out;
+    animation-delay: calc(var(--uib-speed) * -0.3);
   }
 
-  .pl__ring--d {
-    animation-name: ringD;
-    stroke: #f42582;
+  .three-body__dot:nth-child(2) {
+    bottom: 5%;
+    right: 0;
+    transform: rotate(-60deg);
+    transform-origin: 50% 85%;
   }
 
-  /* Animations */
-  @keyframes ringA {
-    from,
-    4% {
-      stroke-dasharray: 0 660;
-      stroke-width: 20;
-      stroke-dashoffset: -330;
-    }
-
-    12% {
-      stroke-dasharray: 60 600;
-      stroke-width: 30;
-      stroke-dashoffset: -335;
-    }
-
-    32% {
-      stroke-dasharray: 60 600;
-      stroke-width: 30;
-      stroke-dashoffset: -595;
-    }
-
-    40%,
-    54% {
-      stroke-dasharray: 0 660;
-      stroke-width: 20;
-      stroke-dashoffset: -660;
-    }
-
-    62% {
-      stroke-dasharray: 60 600;
-      stroke-width: 30;
-      stroke-dashoffset: -665;
-    }
-
-    82% {
-      stroke-dasharray: 60 600;
-      stroke-width: 30;
-      stroke-dashoffset: -925;
-    }
-
-    90%,
-    to {
-      stroke-dasharray: 0 660;
-      stroke-width: 20;
-      stroke-dashoffset: -990;
-    }
+  .three-body__dot:nth-child(2)::after {
+    bottom: 0;
+    left: 0;
+    animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15)
+      ease-in-out;
   }
 
-  @keyframes ringB {
-    from,
-    12% {
-      stroke-dasharray: 0 220;
-      stroke-width: 20;
-      stroke-dashoffset: -110;
+  .three-body__dot:nth-child(3) {
+    bottom: -5%;
+    left: 0;
+    transform: translateX(116.666%);
+  }
+
+  .three-body__dot:nth-child(3)::after {
+    top: 0;
+    left: 0;
+    animation: wobble2 var(--uib-speed) infinite ease-in-out;
+  }
+
+  @keyframes spin78236 {
+    0% {
+      transform: rotate(0deg);
     }
 
-    20% {
-      stroke-dasharray: 20 200;
-      stroke-width: 30;
-      stroke-dashoffset: -115;
-    }
-
-    40% {
-      stroke-dasharray: 20 200;
-      stroke-width: 30;
-      stroke-dashoffset: -195;
-    }
-
-    48%,
-    62% {
-      stroke-dasharray: 0 220;
-      stroke-width: 20;
-      stroke-dashoffset: -220;
-    }
-
-    70% {
-      stroke-dasharray: 20 200;
-      stroke-width: 30;
-      stroke-dashoffset: -225;
-    }
-
-    90% {
-      stroke-dasharray: 20 200;
-      stroke-width: 30;
-      stroke-dashoffset: -305;
-    }
-
-    98%,
-    to {
-      stroke-dasharray: 0 220;
-      stroke-width: 20;
-      stroke-dashoffset: -330;
+    100% {
+      transform: rotate(360deg);
     }
   }
 
-  @keyframes ringC {
-    from {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: 0;
+  @keyframes wobble1 {
+    0%,
+    100% {
+      transform: translateY(0%) scale(1);
+      opacity: 1;
     }
 
-    8% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -5;
-    }
-
-    28% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -175;
-    }
-
-    36%,
-    58% {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: -220;
-    }
-
-    66% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -225;
-    }
-
-    86% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -395;
-    }
-
-    94%,
-    to {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: -440;
-    }
-  }
-
-  @keyframes ringD {
-    from,
-    8% {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: 0;
-    }
-
-    16% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -5;
-    }
-
-    36% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -175;
-    }
-
-    44%,
     50% {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: -220;
+      transform: translateY(-66%) scale(0.65);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes wobble2 {
+    0%,
+    100% {
+      transform: translateY(0%) scale(1);
+      opacity: 1;
     }
 
-    58% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -225;
-    }
-
-    78% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -395;
-    }
-
-    86%,
-    to {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: -440;
+    50% {
+      transform: translateY(66%) scale(0.65);
+      opacity: 0.8;
     }
   }
 `;
