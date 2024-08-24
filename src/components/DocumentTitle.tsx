@@ -1,6 +1,7 @@
 "use client";
 import { updateDocument } from "@/actions/room.actions";
 import GenericInput from "@/common/input";
+import TitleLoader from "@/common/TitleLoader";
 import { DocumentTitleProps } from "@/types";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
@@ -83,7 +84,7 @@ const DocumentTitle = ({ metadata, roomId }: DocumentTitleProps) => {
               height={20}
             />
           ) : (
-            <p className="text-xs">saving...</p>
+            <TitleLoader />
           )}
         </div>
       )}

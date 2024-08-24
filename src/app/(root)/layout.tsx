@@ -13,6 +13,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <div id="title-wrapper"></div>
           <div className="flex items-center gap-2 lg:gap-4">
             <div id="collaborators-wrapper"></div>
+            <div id="notification-wrapper"></div>
             <SignedOut>
               <SignInButton />
             </SignedOut>
