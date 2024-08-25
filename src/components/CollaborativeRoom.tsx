@@ -7,6 +7,7 @@ import ActiveCollaborators from "./ActiveCollaborators";
 import DocumentTitle from "./DocumentTitle";
 import { CollaborativeRoomProps } from "@/types";
 import { Notifications } from "./Notifications";
+import ShareModal from "./ShareModal";
 const CollaborativeRoom = ({
   id,
   room,
@@ -19,6 +20,12 @@ const CollaborativeRoom = ({
       <RoomProvider id={id}>
         <ClientSideSuspense fallback={<Loader />}>
           <Notifications />
+          <ShareModal
+            roomId={id}
+            collaborators={users}
+            creatorId={metadata.creatorId[0]}
+            currentUserType={currentUserType}
+          />
           <DocumentTitle metadata={metadata} roomId={id} />
           <ActiveCollaborators />
           <Editor id={id} currentUserType={currentUserType} />
