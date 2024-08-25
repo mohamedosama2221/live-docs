@@ -9,6 +9,7 @@ import Provider from "./Provider";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 });
 
 interface RootLayoutProps {

@@ -15,12 +15,6 @@ declare type RoomAccesses = Record<string, AccessType>;
 
 declare type UserType = "creator" | "editor" | "viewer";
 
-declare type RoomMetadata = {
-  creatorId: string;
-  email: string;
-  title: string;
-};
-
 declare type CreateDocumentParams = {
   userId: string;
   email: string;

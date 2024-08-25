@@ -9,10 +9,20 @@ import { DeleteModal } from "@/components/DeleteModal";
 
 const RoomList = ({ id, metadata, createdAt }: RoomListProps) => {
   return (
-    <li key={id} className="document-list-item">
+    <li key={id} className="document-list-item relative overflow-hidden">
+      <div className="h-full w-full absolute inset-0 z-0">
+        <Image
+          src="/assets/images/doc.webp"
+          alt="bg"
+          fill={true}
+          objectFit="fit"
+          priority={true}
+          loading="eager"
+        />
+      </div>
       <Link
         href={`/documents/${id}`}
-        className="flex flex-1 items-center gap-4"
+        className="flex flex-1 items-center gap-4 relative z-10"
       >
         <div className="hidden rounded-md bg-dark-500 p-2 sm:block">
           <Image
@@ -42,7 +52,9 @@ const RoomList = ({ id, metadata, createdAt }: RoomListProps) => {
           )}
         </div>
       </Link>
-      <DeleteModal roomId={id} />
+      <div className="z-10 relative">
+        <DeleteModal roomId={id} />
+      </div>
     </li>
   );
 };

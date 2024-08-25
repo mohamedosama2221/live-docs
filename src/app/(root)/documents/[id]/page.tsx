@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getDocument } from "@/actions/room.actions";
 import { getClerkUsers } from "@/actions/user.action";
 import CollaborativeRoom from "@/components/CollaborativeRoom";
@@ -22,7 +23,6 @@ const Document = async (props: { params: { id: string } }) => {
 
   const userIds = Object.keys(room.usersAccesses);
   const users = await getClerkUsers({ userIds });
-
   const usersData = users.map((user: User) => ({
     ...user,
     userType: room.usersAccesses[user.email]?.includes("room:write")

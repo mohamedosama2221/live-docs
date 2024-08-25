@@ -54,7 +54,7 @@ const config = {
         },
       },
       backgroundImage: {
-        doc: "url(/assets/images/doc.png)",
+        doc: "url(/assets/images/doc.webp)",
         modal: "url(/assets/images/modal.png)",
       },
       animation: {
