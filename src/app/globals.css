@@ -14,21 +14,25 @@
     margin: 0;
   }
 
+  .inbox::-webkit-scrollbar,
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;
     height: 4px;
     border-radius: 50px;
   }
 
+  .inbox::-webkit-scrollbar-track,
   .custom-scrollbar::-webkit-scrollbar-track {
     background: #09090a;
   }
 
+  .inbox::-webkit-scrollbar-thumb,
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #2e3d5b;
     border-radius: 50px;
   }
 
+  .inbox::-webkit-scrollbar-thumb:hover,
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #7878a3;
   }
@@ -356,6 +360,8 @@
   place-items: center;
   background: var(--accent);
   color: #fff;
+  border-radius: 50%;
+  background-color: #953939;
   font-size: 0.65rem;
   font-weight: 500;
   height: 1rem;
@@ -415,4 +421,36 @@
 
 .button.empty {
   background: #0f1c34;
+}
+
+.lb-inbox-notification-body {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+}
+.lb-inbox-notification-header {
+  font-weight: 600;
+  color: #fff;
+}
+
+.lb-inbox-notification-date {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.lb-inbox-notification-list-item {
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 5px 10px;
+}
+
+.lb-inbox-notification-comments .lb-comment {
+  border-radius: 5px;
+}
+
+.lb-inbox-notification-comments .lb-comment-content {
+  margin-top: 0px;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 14px;
 }

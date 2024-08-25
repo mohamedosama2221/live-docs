@@ -16,6 +16,7 @@ import { usePathname } from "next/navigation";
 import Loader from "@/common/Loader";
 import { createPortal } from "react-dom";
 import InboxIcon from "@/Icons/InboxIcon";
+import Image from "next/image";
 
 function Inbox({ className, ...props }: ComponentPropsWithoutRef<"div">) {
   const { inboxNotifications } = useInboxNotifications();
@@ -32,6 +33,36 @@ function Inbox({ className, ...props }: ComponentPropsWithoutRef<"div">) {
             <InboxNotification
               key={inboxNotification.id}
               inboxNotification={inboxNotification}
+              href={`/documents/${inboxNotification.roomId}`}
+              kinds={{
+                thread: (props) => (
+                  <InboxNotification.Thread {...props} showRoomName={false} />
+                ),
+                $documentAccess: (props: any) => {
+                  return (
+                    <InboxNotification.Custom
+                      {...props}
+                      inboxNotification={props.inboxNotification}
+                      title={"Document Access"}
+                      aside={
+                        <InboxNotification.Icon>
+                          <Image
+                            className="rounded-full"
+                            alt="avatar"
+                            width={40}
+                            height={40}
+                            src={
+                              props.inboxNotification.activities[0].data.avatar
+                            }
+                          />
+                        </InboxNotification.Icon>
+                      }
+                    >
+                      {props.inboxNotification.activities[0].data.title}
+                    </InboxNotification.Custom>
+                  );
+                },
+              }}
               //   components={{ Anchor: Link }}
             />
           );
